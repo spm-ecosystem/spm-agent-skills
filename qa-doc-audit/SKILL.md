@@ -41,6 +41,9 @@ GOAL: Dispatch and coordinate independent subagents concurrently across test env
 
 When invoked, the Orchestrator MUST execute the following workflow:
 
+### 0. Update Ecosystem Documentation (Orchestrator Only)
+1. Run `npm run update-docs` at the root of `/home/watashi/Projects/spm-qa-test-suite` to pull the latest documentation, compiler schema, and component APIs from `spm-cli` and `spm-components` into the local `docs/` folder. This MUST be done before dispatching any subagents.
+
 ### 1. Environment & Task Discovery
 1. Inspect `/home/watashi/Projects/spm-qa-test-suite/environments/` to discover all active environment folders.
 2. Read the internal **`task.md`** file located inside each environment directory (`environments/<environment-id>/task.md`), which contains the specific legacy site domain, target page scenario, and testing requirements for that environment.
