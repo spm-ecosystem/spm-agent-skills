@@ -13,10 +13,8 @@ GOAL: Dispatch and coordinate independent subagents that perform **empirical, ve
 > **PREREQUISITE: spm-cli COMMANDS**  
 > This skill requires the following `spm-cli` commands to be available:
 > - `spm compile` — Compiles `.vnr` project into `manifest.json` (AVAILABLE)
-> - `spm validate` — Validates manifest selectors against HTML snapshots (PENDING — see spm-cli issue #2)
-> - `spm apply` — Applies manifest transformations to HTML and outputs result (PENDING — see spm-cli issue #3)
->
-> Until `spm validate` and `spm apply` are implemented, this skill operates in **partial mode** using only `spm compile` validation and manual HTML snapshot analysis.
+> - `spm validate` — Validates manifest selectors against HTML snapshots (AVAILABLE)
+> - `spm apply` — Applies manifest transformations to HTML and outputs result (AVAILABLE)
 
 > [!IMPORTANT]
 > **CRITICAL PIPELINE RULE (STRICTLY FORBIDDEN):**  
@@ -92,12 +90,6 @@ spm validate manifest.json --against fixtures/page-snapshot.html --json
 - Record bind extraction results with actual extracted values.
 - Record preserve slot resolution status.
 
-> [!NOTE]
-> **PARTIAL MODE:** If `spm validate` is not available, perform manual validation:
-> - Read the fixture HTML file
-> - Search for each CSS selector from the manifest
-> - Report whether the selector appears to match elements in the HTML
-
 ### Part 6: Transformation Verification (requires `spm apply`)
 ```bash
 spm apply manifest.json --input fixtures/page-snapshot.html --output fixtures/result.html
@@ -106,9 +98,6 @@ spm apply manifest.json --input fixtures/page-snapshot.html --output fixtures/re
 - Verify reconstruct containers are replaced with component placeholders.
 - Verify theme CSS variables are injected in `<head>`.
 - Verify preserve slots are extracted and placed.
-
-> [!NOTE]
-> **PARTIAL MODE:** If `spm apply` is not available, skip this step and note it in the report.
 
 ### Part 7: Report & Commit
 Write findings to `environments/<env-id>/result.md` and commit:
